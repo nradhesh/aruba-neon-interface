@@ -10,14 +10,18 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-neon-blue to-neon-cyan rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-xl">A</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold neon-text">ARUBA</h1>
-              <p className="text-xs text-gray-400">HPE Networks</p>
-            </div>
+<div className="flex items-center space-x-3">
+  <img
+    src="https://images.app.goo.gl/THBR8EKPQF8kvgzX8"
+    alt="Aruba Logo"
+    className="w-10 h-10 rounded-lg object-cover"
+  />
+  <div>
+    <h1 className="text-xl font-bold neon-text">ARUBA</h1>
+    <p className="text-xs text-gray-400">HPE Networks</p>
+  </div>
+</div>
+
           </div>
 
           {/* Desktop Navigation */}
