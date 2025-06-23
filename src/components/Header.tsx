@@ -21,17 +21,7 @@ export const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-gray-300 hover:text-neon-blue transition-colors">
-              Services
-            </a>
-            <a href="#analytics" className="text-gray-300 hover:text-neon-blue transition-colors">
-              Analytics
-            </a>
-            <a href="#documentation" className="text-gray-300 hover:text-neon-blue transition-colors">
-              Documentation
-            </a>
-          </nav>
+         
 
           {/* User Actions */}
           <div className="hidden md:flex items-center space-x-4">
