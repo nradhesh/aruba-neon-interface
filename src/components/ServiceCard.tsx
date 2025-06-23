@@ -29,7 +29,6 @@ export const ServiceCard = ({ service, index, onClick, isActive }: ServiceCardPr
       'search_vector_database': '/vector-database',
       'scrape_url': '/url-scraper',
       'web_search': '/web-search',
-      'get_collection_stats': '/collection-stats',
       'ingest_url_list': '/url-ingestion',
     };
     return routeMap[serviceId] || '/';

@@ -8,7 +8,6 @@ import {
   Database, 
   Globe, 
   Link, 
-  BarChart3, 
   FileText,
   MessageCircle 
 } from 'lucide-react';
@@ -48,14 +47,6 @@ const Index = () => {
       icon: Search,
       color: 'neon-purple',
       apiEndpoint: '// Insert API URL for web search here',
-    },
-    {
-      id: 'get_collection_stats',
-      title: 'Collection Statistics',
-      description: 'Retrieve analytics and statistics from data collections',
-      icon: BarChart3,
-      color: 'neon-pink',
-      apiEndpoint: '// Insert API URL for collection statistics here',
     },
     {
       id: 'ingest_url_list',

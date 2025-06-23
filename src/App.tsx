@@ -10,7 +10,6 @@ import QueryDocumentationPage from "./pages/QueryDocumentationPage";
 import VectorDatabasePage from "./pages/VectorDatabasePage";
 import UrlScraperPage from "./pages/UrlScraperPage";
 import WebSearchPage from "./pages/WebSearchPage";
-import CollectionStatsPage from "./pages/CollectionStatsPage";
 import UrlListIngestionPage from "./pages/UrlListIngestionPage";
 
 const queryClient = new QueryClient();
@@ -27,7 +26,6 @@ const App = () => (
           <Route path="/vector-database" element={<VectorDatabasePage />} />
           <Route path="/url-scraper" element={<UrlScraperPage />} />
           <Route path="/web-search" element={<WebSearchPage />} />
-          <Route path="/collection-stats" element={<CollectionStatsPage />} />
           <Route path="/url-ingestion" element={<UrlListIngestionPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
