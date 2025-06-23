@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				neon: {
+					blue: '#00f5ff',
+					cyan: '#00ffff',
+					green: '#39ff14',
+					purple: '#bf00ff',
+					pink: '#ff0080',
+					orange: '#ff4500'
 				}
 			},
 			borderRadius: {
@@ -84,11 +93,44 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'neon-pulse': {
+					'0%, 100%': {
+						boxShadow: '0 0 5px #00f5ff, 0 0 10px #00f5ff, 0 0 15px #00f5ff'
+					},
+					'50%': {
+						boxShadow: '0 0 10px #00f5ff, 0 0 20px #00f5ff, 0 0 30px #00f5ff'
+					}
+				},
+				'neon-text': {
+					'0%, 100%': {
+						textShadow: '0 0 5px #00f5ff, 0 0 10px #00f5ff'
+					},
+					'50%': {
+						textShadow: '0 0 10px #00f5ff, 0 0 20px #00f5ff, 0 0 30px #00f5ff'
+					}
+				},
+				'slide-in': {
+					'0%': {
+						transform: 'translateY(20px)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
+				'neon-text': 'neon-text 2s ease-in-out infinite',
+				'slide-in': 'slide-in 0.5s ease-out'
+			},
+			backgroundImage: {
+				'gradient-neon': 'linear-gradient(45deg, #000000, #1a1a1a, #000000)',
+				'gradient-card': 'linear-gradient(145deg, #111111, #222222)',
 			}
 		}
 	},
