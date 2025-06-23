@@ -1,7 +1,7 @@
-
 import { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Service {
   id: string;
@@ -21,6 +21,19 @@ interface ServiceCardProps {
 
 export const ServiceCard = ({ service, index, onClick, isActive }: ServiceCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const getServiceRoute = (serviceId: string) => {
+    const routeMap: { [key: string]: string } = {
+      'query_documentation': '/query-documentation',
+      'search_vector_database': '/vector-database',
+      'scrape_url': '/url-scraper',
+      'web_search': '/web-search',
+      'get_collection_stats': '/collection-stats',
+      'ingest_url_list': '/url-ingestion',
+    };
+    return routeMap[serviceId] || '/';
+  };
 
   const handleServiceCall = async () => {
     setIsLoading(true);
@@ -32,17 +45,9 @@ export const ServiceCard = ({ service, index, onClick, isActive }: ServiceCardPr
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      // Here you would make the actual API call to the service
-      // Example:
-      // const response = await fetch(service.apiEndpoint, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': 'Bearer YOUR_API_KEY' // Insert your API key here
-      //   },
-      //   body: JSON.stringify({ /* your request data */ })
-      // });
-    }, 2000);
+      // Navigate to the service page
+      navigate(getServiceRoute(service.id));
+    }, 1000);
   };
 
   const getColorClasses = (color: string) => {
@@ -96,10 +101,10 @@ export const ServiceCard = ({ service, index, onClick, isActive }: ServiceCardPr
           {isLoading ? (
             <div className="flex items-center space-x-2">
               <div className="w-4 h-4 border-2 border-neon-blue border-t-transparent rounded-full animate-spin"></div>
-              <span>Processing...</span>
+              <span>Opening...</span>
             </div>
           ) : (
-            'Execute Service'
+            'Open Service'
           )}
         </Button>
         
