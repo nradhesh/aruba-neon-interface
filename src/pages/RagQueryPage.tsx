@@ -11,6 +11,7 @@ import {
 import { FileText, Search, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const RagQueryPage = () => {
@@ -45,6 +46,7 @@ const RagQueryPage = () => {
                         id: 1,
                         title: "LLM Generated Answer",
                         excerpt: data.response,
+                        isAnalysis: false,
                         isCode: true, // flag for markdown rendering
                     },
                     {
@@ -147,8 +149,7 @@ const RagQueryPage = () => {
                                 RAG Search
                             </h1>
                             <p className="text-gray-400">
-                                Search through technical documentation and
-                                knowledge base utilising our RAG Pipeline
+                                Powered by Retrieval-Augmented Generation (RAG)
                             </p>
                         </div>
                     </div>
@@ -194,7 +195,7 @@ const RagQueryPage = () => {
                 {results.length > 0 && (
                     <div className="space-y-4">
                         <h2 className="text-xl font-bold text-neon-blue">
-                            Search Results
+                            RAG Output
                         </h2>
                         {results.map((result) => (
                             <Card
@@ -217,14 +218,19 @@ const RagQueryPage = () => {
                                                     <span className="font-semibold capitalize">
                                                         {key}:
                                                     </span>{" "}
-                                                    {value}
+                                                    {String(value)}
                                                 </div>
                                             ))}
                                         </div>
                                     ) : (
-                                        <pre className="whitespace-pre-wrap text-gray-300 text-sm">
-                                            {result.excerpt}
-                                        </pre>
+                                        <details className="bg-black/30 border border-gray-600 rounded-lg px-4 py-2 cursor-pointer">
+                                            <summary className="text-neon-blue font-medium mb-2">
+                                                View Full Answer
+                                            </summary>
+                                            <MarkdownRenderer
+                                                content={result.excerpt}
+                                            />
+                                        </details>
                                     )}
                                 </CardContent>
                             </Card>
