@@ -19,6 +19,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { MermaidViewer } from "@/components/MermaidViewer";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -224,7 +225,7 @@ const TopologyAnalyzer = () => {
                                     <AccordionTrigger className="text-neon-blue">
                                         🧠 Topology Explanation
                                     </AccordionTrigger>
-                                    <AccordionContent>
+                                    <AccordionContent className="text-white space-y-4 [&_h3]:text-lg [&_h3]:font-bold [&_p]:mb-3">
                                         {result.topology_explanation}
                                     </AccordionContent>
                                 </AccordionItem>
@@ -248,7 +249,27 @@ const TopologyAnalyzer = () => {
                                     <AccordionTrigger className="text-neon-blue">
                                         🖼️ Topology Diagrams
                                     </AccordionTrigger>
-                                    <AccordionContent>
+                                    <AccordionContent className="text-white space-y-4 [&_h3]:text-lg [&_h3]:font-bold [&_p]:mb-3">
+                                        <MermaidViewer
+                                            code={result.diagrams?.original}
+                                            title="Original Topology"
+                                        />
+                                        <MermaidViewer
+                                            code={result.diagrams?.modified}
+                                            title="Proposed Topology"
+                                            pngUrl={
+                                                result.diagrams
+                                                    ?.proposed_png_url
+                                            }
+                                            svgUrl={
+                                                result.diagrams
+                                                    ?.proposed_svg_url
+                                            }
+                                        />
+                                        <MermaidViewer
+                                            code={result.diagrams?.comparison}
+                                            title="Comparison View"
+                                        />
                                         <pre className="bg-gray-900 p-4 rounded mb-4">
                                             {result.diagrams?.original}
                                         </pre>
@@ -273,6 +294,60 @@ const TopologyAnalyzer = () => {
                                                     ?.total_replacements
                                             }
                                         </p>
+                                    </AccordionContent>
+                                </AccordionItem>
+
+                                <AccordionItem value="proposed-infrastructure">
+                                    <AccordionTrigger className="text-neon-blue">
+                                        ✨ Proposed Infra with Replacements
+                                    </AccordionTrigger>
+                                    <AccordionContent
+                                        // className="text-white space-y-3"
+                                        className="bg-black/30 p-4 rounded-lg text-white space-y-4 [&_h3]:text-lg [&_h3]:font-bold [&_p]:mb-3"
+                                    >
+                                        <p>
+                                            <strong>Total Devices:</strong>{" "}
+                                            {result.modified_topology?.devices
+                                                ?.length ?? "Unknown"}
+                                        </p>
+
+                                        {result.modified_topology?.devices
+                                            ?.length > 0 ? (
+                                            <ul className="list-disc list-inside space-y-2">
+                                                {result.modified_topology.devices.map(
+                                                    (device, index) => {
+                                                        const isReplaced =
+                                                            !!device.notes;
+                                                        return (
+                                                            <li key={index}>
+                                                                {isReplaced &&
+                                                                    "🔄 "}
+                                                                <strong>
+                                                                    {device.id}
+                                                                </strong>
+                                                                :{" "}
+                                                                {device.vendor ||
+                                                                    "Unknown"}{" "}
+                                                                {device.model ||
+                                                                    "Unknown"}
+                                                                {isReplaced && (
+                                                                    <em className="block text-sm text-gray-400 ml-6">
+                                                                        {
+                                                                            device.notes
+                                                                        }
+                                                                    </em>
+                                                                )}
+                                                            </li>
+                                                        );
+                                                    }
+                                                )}
+                                            </ul>
+                                        ) : (
+                                            <p>
+                                                No devices listed in modified
+                                                topology.
+                                            </p>
+                                        )}
                                     </AccordionContent>
                                 </AccordionItem>
 
@@ -310,7 +385,7 @@ const TopologyAnalyzer = () => {
                                     </AccordionContent>
                                 </AccordionItem>
 
-                                <AccordionItem value="cost-analysis">
+                                {/* <AccordionItem value="cost-analysis">
                                     <AccordionTrigger className="text-neon-blue">
                                         💰 Cost Analysis
                                     </AccordionTrigger>
@@ -352,7 +427,7 @@ const TopologyAnalyzer = () => {
                                             }
                                         </p>
                                     </AccordionContent>
-                                </AccordionItem>
+                                </AccordionItem> */}
 
                                 <AccordionItem value="impl">
                                     <AccordionTrigger className="text-neon-blue">
