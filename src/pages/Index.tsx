@@ -10,6 +10,7 @@ import {
     FileText,
     MessageCircle,
     Bot,
+    Network,
 } from "lucide-react";
 
 const Index = () => {
@@ -23,6 +24,14 @@ const Index = () => {
             icon: Bot,
             color: "neon-red",
             apiEndpoint: "/query_rag",
+        },
+        {
+            id: "topology_analyzer",
+            title: "Network Topology Related Query Analysis",
+            description: "Query along with the network topology",
+            icon: Network,
+            color: "neon-green",
+            apiEndpoint: "/topology-analyzer",
         },
         {
             id: "query_documentation",

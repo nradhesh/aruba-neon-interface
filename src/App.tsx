@@ -12,6 +12,7 @@ import WebSearchPage from "./pages/WebSearchPage";
 import UrlListIngestionPage from "./pages/UrlListIngestionPage";
 
 import RagQueryPage from "./pages/RagQueryPage";
+import TopologyAnalyzer from "./pages/TopologyAnalyzerPage";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
                     <Route path="/" element={<Index />} />
                     {/* <Route path="/query-documentation" element={<QueryDocumentationPage />} /> */}
                     <Route path="/query-rag" element={<RagQueryPage />} />
+                    <Route path="/topology-analyzer" element={<TopologyAnalyzer />} />
                     <Route
                         path="/vector-database"
                         element={<VectorDatabasePage />}

@@ -31,6 +31,7 @@ export const ServiceCard = ({
     const getServiceRoute = (serviceId: string) => {
         const routeMap: { [key: string]: string } = {
             query_rag: "/query-rag",
+            topology_analyzer: "/topology-analyzer",
             query_documentation: "/query-documentation",
             search_vector_database: "/vector-database",
             scrape_url: "/url-scraper",
